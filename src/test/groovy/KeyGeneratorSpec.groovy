@@ -1,10 +1,13 @@
 import spock.lang.Specification
+import vic.kata.KeyGenerator
 
 class KeyGeneratorSpec extends Specification {
-    def "my first test"() {
+    def "Key Should contents header, package, and method"() {
+        given:
+        KeyGenerator generator = new KeyGenerator("DBO\$");
         when:
-        int actual = 2
+        String key = generator.genKey "my.package.Repository", "saveItem"
         then:
-        1+2 == actual
+        key == "my.package.Repository.saveItem"
     }
 }
