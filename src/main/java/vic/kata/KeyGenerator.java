@@ -12,14 +12,20 @@ public class KeyGenerator {
     }
 
     public String genKey(String className, String method) {
+        String properLengthClassName = getProperLengthClassName(className, method);
+        return MessageFormat.format("{0}{1}.{2}", header, properLengthClassName, method);
+    }
+
+    private String getProperLengthClassName(String className, String method) {
         String key = MessageFormat.format("{0}{1}.{2}", header, className, method);
-        if (key.length() > length) {
-            return MessageFormat.format("{0}{1}.{2}", header, classNameWithoutPackage(className), method);
+        int length = key.length();
+        if (length > this.length) {
+            return classNameWithoutPackage(className);
         }
-        return key;
+        return className;
     }
 
     private String classNameWithoutPackage(String className) {
-        return className.substring(className.lastIndexOf(".")+1);
+        return className.substring(className.lastIndexOf(".") + 1);
     }
 }
