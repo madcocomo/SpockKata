@@ -11,7 +11,15 @@ public class KeyGenerator {
 
     public String genKey(String className, String method) {
         int limitation = this.length - header.length() - method.length() - 1;
-        return  header + getClassNameShorterThan(className, limitation) + method;
+        int methodLimitation = this.length - header.length();
+        return  header + getClassNameShorterThan(className, limitation) + getMethodShorterThan(method, methodLimitation);
+    }
+
+    private String getMethodShorterThan(String method, int limitation) {
+        if (method.length() > limitation) {
+            return method.substring(0, limitation-2) + ".~";
+        }
+        return method;
     }
 
     private String getClassNameShorterThan(String className, int limitation) {
