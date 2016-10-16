@@ -17,8 +17,7 @@ public class KeyGenerator {
     }
 
     private String getProperLengthClassName(String className, String method) {
-        String key = MessageFormat.format("{0}{1}.{2}", header, className, method);
-        int length = key.length();
+        int length = header.length() + className.length() + method.length() + 1;
         if (length > this.length) {
             return classNameWithoutPackage(className);
         }
