@@ -17,7 +17,7 @@ public class KeyGenerator {
     }
 
     private String getProperLengthClassName(String className, String method) {
-        if (this.length  - (header.length() + className.length() + method.length() + 1) < 0) {
+        if (this.length  - (header.length() + method.length() + 1) < className.length() ) {
             return classNameWithoutPackage(className);
         }
         return className;
