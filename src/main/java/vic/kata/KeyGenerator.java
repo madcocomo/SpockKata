@@ -1,8 +1,8 @@
 package vic.kata;
 
 public class KeyGenerator {
-    private String header;
-    private int length;
+    final private String header;
+    final private int length;
 
     public KeyGenerator(String header, int length) {
         this.header = header;
@@ -10,9 +10,9 @@ public class KeyGenerator {
     }
 
     public String genKey(String className, String method) {
-        int limitation = this.length - header.length() - method.length() - 1;
-        int methodLimitation = this.length - header.length();
-        return  header + getClassNameShorterThan(className, limitation) + getMethodShorterThan(method, methodLimitation);
+        int methodLimit = this.length - header.length();
+        int classLimit = methodLimit - method.length() - 1;
+        return  header + getClassNameShorterThan(className, classLimit) + getMethodShorterThan(method, methodLimit);
     }
 
     private String getMethodShorterThan(String method, int limitation) {
