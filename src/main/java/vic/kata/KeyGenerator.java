@@ -1,7 +1,5 @@
 package vic.kata;
 
-import java.text.MessageFormat;
-
 public class KeyGenerator {
     private String header;
     private int length;
@@ -13,14 +11,18 @@ public class KeyGenerator {
 
     public String genKey(String className, String method) {
         int limitation = this.length - header.length() - method.length() - 1;
-        return MessageFormat.format("{0}{1}.{2}", header, getClassNameShorterThan(className, limitation), method);
+        return  header + getClassNameShorterThan(className, limitation) + method;
     }
 
     private String getClassNameShorterThan(String className, int limitation) {
         if (className.length() > limitation) {
-            return classNameWithoutPackage(className);
+            String withoutPackage = classNameWithoutPackage(className);
+            if (withoutPackage.length() > limitation) {
+                return "";
+            }
+            return withoutPackage + ".";
         }
-        return className;
+        return className + ".";
     }
 
     private String classNameWithoutPackage(String className) {
