@@ -16,11 +16,10 @@ public class KeyGenerator {
 
     private String getClassNameShorterThan(String className, int limitation) {
         if (className.length() > limitation) {
-            String withoutPackage = classNameWithoutPackage(className);
-            if (withoutPackage.length() > limitation) {
-                return "";
-            }
-            return withoutPackage + ".";
+            className = classNameWithoutPackage(className);
+        }
+        if (className.length() > limitation) {
+            return "";
         }
         return className + ".";
     }
