@@ -10,10 +10,12 @@ class KeyGeneratorSpec extends Specification {
         then:
         key == expect
         where:
-        className                                   |method         ||expect
-        "5678901234567890123456789"                 |"1234567890"   ||"DBO\$5678901234567890123456789.1234567890"
-        "my.package.Repository"                     |"saveItem"     ||"DBO\$my.package.Repository.saveItem"
-        "my.deep.deep.deep.package.Repository"      |"saveItem"     ||"DBO\$Repository.saveItem"
-        "my.package.VeryVeryVeryLoooooogClassName"  |"saveItem"     ||"DBO\$saveItem"
+        expect                                      ||className                                   |method
+        "DBO\$5678901234567890123456789.1234567890" ||"5678901234567890123456789"                 |"1234567890"
+        "DBO\$my.package.Repository.saveItem"       ||"my.package.Repository"                     |"saveItem"
+        "DBO\$Repository.saveItem"                  ||"my.deep.deep.deep.package.Repository"      |"saveItem"
+        "DBO\$saveItem"                             ||"my.package.VeryVeryVeryLoooooogClassName"  |"saveItem"
+        "DBO\$veryVeryVeryLoooooooogMethod"         ||"my.package.Repository"                     |"veryVeryVeryLoooooooogMethod"
+        "DBO\$unbelievableLooooooooooooooooooooo.~" ||"my.package.Repository"                     |"unbelievableLooooooooooooooooooooooooooogMethod"
     }
 }
