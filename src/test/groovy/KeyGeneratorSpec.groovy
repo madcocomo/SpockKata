@@ -8,6 +8,6 @@ class KeyGeneratorSpec extends Specification {
         when:
         String key = generator.genKey "my.package.Repository", "saveItem"
         then:
-        key == "my.package.Repository.saveItem"
+        key == "DBO\$my.package.Repository.saveItem"
     }
 }
