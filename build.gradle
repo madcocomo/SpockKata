@@ -1,7 +1,7 @@
 group 'VicWu'
 version '1.0-SNAPSHOT'
 
-buildscript {
+allprojects {
 	repositories {
         maven {
             url "http://uk.maven.org/maven2/"
@@ -17,10 +17,6 @@ apply plugin: 'groovy'
 apply plugin: 'java'
 
 sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.3.11'
