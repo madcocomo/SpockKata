@@ -19,4 +19,13 @@ class TreeBuilderSpec extends Specification {
         root.text == "A"
         root.left.text == "L"
     }
+
+    def "should set both left and right"() {
+        when:
+        TreeNode root = builder.build("A,L,R")
+        then:
+        root.text == "A"
+        root.left.text == "L"
+        root.right.text == "L"
+    }
 }

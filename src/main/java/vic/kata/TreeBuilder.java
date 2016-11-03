@@ -12,6 +12,6 @@ public class TreeBuilder {
         } else {
             left = "";
         }
-        return new TreeNode(root, build(left));
+        return new TreeNode(root, build(left), null);
     }
 }

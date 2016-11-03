@@ -3,13 +3,12 @@ package vic.kata;
 public class TreeNode {
     private String text;
     private TreeNode left;
+    private TreeNode right;
 
-    public TreeNode(String text) {
-        this(text, null);
-    }
-    public TreeNode(String text, TreeNode left) {
+    public TreeNode(String text, TreeNode left, TreeNode right) {
         this.text = text;
         this.left = left;
+        this.right = right;
     }
 
     public String getText() {
@@ -19,4 +18,9 @@ public class TreeNode {
     public TreeNode getLeft() {
         return left;
     }
+
+    public TreeNode getRight() {
+        return right;
+    }
 }
+
