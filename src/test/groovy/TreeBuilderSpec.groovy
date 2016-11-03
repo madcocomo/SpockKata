@@ -26,6 +26,6 @@ class TreeBuilderSpec extends Specification {
         then:
         root.text == "A"
         root.left.text == "L"
-        root.right.text == "L"
+        root.right.text == "R"
     }
 }
