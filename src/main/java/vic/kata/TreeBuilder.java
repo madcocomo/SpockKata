@@ -6,12 +6,14 @@ public class TreeBuilder {
         if (text.equals("")) return null;
         String[] parts = text.split(",");
         String root = parts[0];
-        TreeNode leftNode;
-        if (text.contains(",")) {
-            leftNode = build(parts[1]);
+        String left;
+        if (parts.length > 1) {
+            left = parts[1];
         } else {
-            leftNode = build("");
+            left = "";
         }
+        TreeNode leftNode;
+        leftNode = build(left);
         return new TreeNode(root, leftNode);
     }
 }
