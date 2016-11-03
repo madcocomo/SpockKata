@@ -5,10 +5,11 @@ public class TreeBuilder {
     public TreeNode build(String text) {
         String[] parts = text.split(",");
         String root = parts[0];
-        TreeNode leftNode = null;
+        TreeNode leftNode;
         if (text.contains(",")) {
-            leftNode = new TreeNode(parts[1]);
-            return new TreeNode(root, leftNode);
+            leftNode = build(parts[1]);
+        } else {
+            leftNode = null;
         }
         return new TreeNode(root, leftNode);
     }
