@@ -4,6 +4,9 @@ public class TreeNode {
     private String text;
     private TreeNode left;
 
+    public TreeNode(String text) {
+        this(text, null);
+    }
     public TreeNode(String text, TreeNode left) {
         this.text = text;
         this.left = left;
