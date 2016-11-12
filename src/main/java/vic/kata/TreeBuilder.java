@@ -12,7 +12,7 @@ public class TreeBuilder {
         if ("A,(L,LL,LR),R".equals(text)) {
             String root = text.substring(0,text.indexOf(","));
             String left = "(L,LL,LR)";
-            String right = "R";
+            String right = text.substring(text.lastIndexOf(",") + 1);
             return new String[]{root, left, right};
         }
         String[] parts = text.replaceAll("^\\(|\\)$","").split(",");
