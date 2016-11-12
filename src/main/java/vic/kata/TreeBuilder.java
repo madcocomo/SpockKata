@@ -30,19 +30,12 @@ public class TreeBuilder {
         }
         String root = text.substring(0, i1);
         String left;
-        if (i1 < i2) {
-            left = text.substring(i1 + 1, i2);
-        } else {
+        if (i1 >= i2) {
             left = text.substring(i1 + 1);
+            return new String[]{root, left, ""};
         }
-
-        String right;
-        if (i1 < i2) {
-            right = text.substring(i2 + 1);
-        }
-        else {
-            right = "";
-        }
+        left = text.substring(i1 + 1, i2);
+        String right = text.substring(i2 + 1);
         return new String[]{root, left, right};
     }
 }
