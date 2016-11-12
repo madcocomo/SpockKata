@@ -21,13 +21,14 @@ public class TreeBuilder {
     public String[] tripleSplit(String text) {
         int i1 = text.indexOf(",");
         int i2 = text.lastIndexOf(",");
-        String root;
-        if (i1 > 0) {
-            root = text.substring(0, i1);
-        } else {
+        return cutToTriple(text, i1, i2);
+    }
+
+    private String[] cutToTriple(String text, int i1, int i2) {
+        if (i1 <= 0) {
             return new String[]{text, "", ""};
         }
-
+        String root = text.substring(0, i1);
         String left;
         if (i1 < i2) {
             left = text.substring(i1 + 1, i2);
