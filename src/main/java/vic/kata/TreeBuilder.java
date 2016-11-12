@@ -10,7 +10,10 @@ public class TreeBuilder {
 
     private String[] getTexts(String text) {
         if ("A,(L,LL,LR),R".equals(text)) {
-            return new String[]{"A", "L,LL,LR", "R"};
+            String root = text.substring(0,text.indexOf(","));
+            String left = "(L,LL,LR)";
+            String right = "R";
+            return new String[]{root, left, right};
         }
         String[] parts = text.replaceAll("^\\(|\\)$","").split(",");
         String[] texts = new String[]{"","",""};
