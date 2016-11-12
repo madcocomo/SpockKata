@@ -30,4 +30,11 @@ class TreeBuilderSpec extends Specification {
         root.left.text == "L"
         root.right.text == "R"
     }
+
+    def "that's alright with parentheses"() {
+        when:
+        TreeNode root = builder.build("(A)")
+        then:
+        root.text == "A"
+    }
 }
