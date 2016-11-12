@@ -45,4 +45,14 @@ class TreeBuilderSpec extends Specification {
         root.left.text == "L"
         root.left.left.text == "LL"
     }
+
+    def "should split normal 3 parts"() {
+        expect:
+        builder.tripleSplit("A,B,C") == ["A", "B", "C"]
+    }
+
+    def "should split less than 3 parts"() {
+        expect:
+        builder.tripleSplit("A,B") == ["A", "B", ""]
+    }
 }

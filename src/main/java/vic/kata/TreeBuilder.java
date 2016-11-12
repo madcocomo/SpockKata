@@ -22,8 +22,19 @@ public class TreeBuilder {
         int i1 = text.indexOf(",");
         int i2 = text.lastIndexOf(",");
         String root = text.substring(0, i1);
-        String left = text.substring(i1 + 1, i2);
-        String right = text.substring(i2 + 1);
+        String left;
+        if (i1 < i2) {
+            left = text.substring(i1 + 1, i2);
+        } else {
+            left = text.substring(i1 + 1);
+        }
+        String right;
+        if (i1 < i2) {
+            right = text.substring(i2 + 1);
+        }
+        else {
+            right = "";
+        }
         return new String[]{root, left, right};
     }
 }
