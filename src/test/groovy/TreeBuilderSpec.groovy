@@ -10,6 +10,8 @@ class TreeBuilderSpec extends Specification {
         TreeNode root = builder.build("A")
         then:
         root.text == "A"
+        root.left == null
+        root.right == null
     }
 
     def "should set left child by 2nd string"() {
