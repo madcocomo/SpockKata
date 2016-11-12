@@ -37,4 +37,12 @@ class TreeBuilderSpec extends Specification {
         then:
         root.text == "A"
     }
+
+    def "deep left in parentheses"() {
+        when:
+        TreeNode root = builder.build("A,(L,LL,LR),R")
+        then:
+        root.left.text == "L"
+        root.left.left.text == "LL"
+    }
 }
