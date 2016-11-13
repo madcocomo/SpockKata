@@ -19,13 +19,12 @@ public class TreeBuilder {
     }
 
     private int getRightStartPoint(String text) {
-        int result = text.lastIndexOf(",");
-
-        if (text.endsWith(")")) {
-            result = text.length();
-            for (int i = text.length() - 1; text.charAt(i) == ')'; i--) {
-                result = text.lastIndexOf(",(", result-1);
-            }
+        int result = text.length();
+        for (int i = text.length() - 1; text.charAt(i) == ')'; i--) {
+            result = text.lastIndexOf(",(", result - 1);
+        }
+        if (!text.endsWith(")")) {
+            result = text.lastIndexOf(",");
         }
         return result;
     }
