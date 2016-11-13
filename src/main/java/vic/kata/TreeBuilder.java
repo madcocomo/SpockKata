@@ -19,16 +19,15 @@ public class TreeBuilder {
     }
 
     private int getRightStartPoint(String text) {
-        int i2 = text.lastIndexOf(",");
-        int endingI = text.length() - 1;
-        if (text.charAt(endingI) == ')') {
-            i2 = text.lastIndexOf(",(");
-            endingI -= 1;
-            if (text.charAt(endingI) == ')') {
-                i2 = text.lastIndexOf(",(", i2-1);
+        int result = text.lastIndexOf(",");
+
+        if (text.endsWith(")")) {
+            result = text.length();
+            for (int i = text.length() - 1; text.charAt(i) == ')'; i--) {
+                result = text.lastIndexOf(",(", result-1);
             }
         }
-        return i2;
+        return result;
     }
 
     private String[] cutToTriple(String text, int i1, int i2) {
