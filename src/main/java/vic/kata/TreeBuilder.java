@@ -18,6 +18,9 @@ public class TreeBuilder {
         if (text.endsWith(")")) {
             i2 = text.lastIndexOf(",(");
         }
+        if (text.endsWith("))")) {
+            i2 = text.lastIndexOf(",(", i2-1);
+        }
         return cutToTriple(text, i1, i2);
     }
 
