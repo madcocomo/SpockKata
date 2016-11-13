@@ -55,6 +55,7 @@ class TreeBuilderSpec extends Specification {
         "A,B"        || ["A", "B", ""]
         "A"          || ["A", "", ""]
         "A,B,(C,C1)" || ["A", "B", "(C,C1)"]
+        "A,B,(C,C1,(C2,C22))" || ["A", "B", "(C,C1,(C2,C22))"]
     }
 
 }
