@@ -9,13 +9,7 @@ public class TreeBuilder {
     }
 
     private String[] getTexts(String text) {
-        if ("A,(L,LL,LR),R".equals(text)) {
-            return tripleSplit(text);
-        }
-        String[] parts = text.replaceAll("^\\(|\\)$","").split(",");
-        String[] texts = new String[]{"","",""};
-        System.arraycopy(parts, 0, texts, 0, parts.length);
-        return texts;
+        return tripleSplit(text.replaceAll("^\\(|\\)$",""));
     }
 
     public String[] tripleSplit(String text) {
