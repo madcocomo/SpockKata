@@ -47,7 +47,6 @@ class TreeBuilderSpec extends Specification {
         root.left.left.text == "LL"
     }
 
-    @Ignore
     def "deep left and right"() {
         when:
         TreeNode root = builder.build(
