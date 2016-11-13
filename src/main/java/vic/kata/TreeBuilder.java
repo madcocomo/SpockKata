@@ -23,7 +23,6 @@ public class TreeBuilder {
         for (int i = text.length() - 1; text.charAt(i) == ')'; i--) {
             result = text.lastIndexOf(",(", result - 1);
         }
-        result = Math.min(result, text.lastIndexOf(","));
         return Math.min(result, text.lastIndexOf(","));
     }
 
