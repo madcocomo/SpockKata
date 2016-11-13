@@ -14,6 +14,11 @@ public class TreeBuilder {
 
     public String[] tripleSplit(String text) {
         int i1 = text.indexOf(",");
+        int i2 = getRightStartPoint(text);
+        return cutToTriple(text, i1, i2);
+    }
+
+    private int getRightStartPoint(String text) {
         int i2 = text.lastIndexOf(",");
         if (text.endsWith(")")) {
             i2 = text.lastIndexOf(",(");
@@ -21,7 +26,7 @@ public class TreeBuilder {
         if (text.endsWith("))")) {
             i2 = text.lastIndexOf(",(", i2-1);
         }
-        return cutToTriple(text, i1, i2);
+        return i2;
     }
 
     private String[] cutToTriple(String text, int i1, int i2) {
