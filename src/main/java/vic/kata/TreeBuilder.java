@@ -24,7 +24,7 @@ public class TreeBuilder {
             result = text.lastIndexOf(",(", result - 1);
         }
         result = Math.min(result, text.lastIndexOf(","));
-        return result;
+        return Math.min(result, text.lastIndexOf(","));
     }
 
     private String[] cutToTriple(String text, int i1, int i2) {
