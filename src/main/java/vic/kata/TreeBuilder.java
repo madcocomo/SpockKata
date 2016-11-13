@@ -15,6 +15,9 @@ public class TreeBuilder {
     public String[] tripleSplit(String text) {
         int i1 = text.indexOf(",");
         int i2 = text.lastIndexOf(",");
+        if (text.endsWith(")")) {
+            i2 = text.lastIndexOf(",(");
+        }
         return cutToTriple(text, i1, i2);
     }
 
