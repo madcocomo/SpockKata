@@ -20,8 +20,11 @@ public class TreeBuilder {
 
     private int getRightStartPoint(String text) {
         int result = text.length();
-        for (int i = text.length() - 1; text.charAt(i) == ')'; i--) {
-            result = text.lastIndexOf(",(", result - 1);
+        int limit = text.lastIndexOf(",(");
+        for (int i = text.length() - 1; i > limit; i--) {
+            if (text.charAt(i) == ')') {
+                result = text.lastIndexOf(",(", result - 1);
+            }
         }
         return Math.min(result, text.lastIndexOf(","));
     }
