@@ -19,6 +19,9 @@ public class TreeBuilder {
     }
 
     private int getRightStartPoint(String text) {
+        if (!text.endsWith(")")) {
+            return text.lastIndexOf(",");
+        }
         int result = text.length();
         int limit = text.lastIndexOf(",(");
         for (int i = text.length() - 1; i > limit; i--) {
@@ -26,7 +29,7 @@ public class TreeBuilder {
                 result = text.lastIndexOf(",(", result - 1);
             }
         }
-        return Math.min(result, text.lastIndexOf(","));
+        return result;
     }
 
     private String[] cutToTriple(String text, int i1, int i2) {
