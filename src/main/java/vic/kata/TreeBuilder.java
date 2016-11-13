@@ -22,9 +22,9 @@ public class TreeBuilder {
         if (!text.endsWith(")")) {
             return text.lastIndexOf(",");
         }
-        int result = text.length();
         int limit = text.lastIndexOf(",(");
-        for (int i = text.length() - 1; i > limit; i--) {
+        int result = limit;
+        for (int i = text.length() - 2; i > limit; i--) {
             if (text.charAt(i) == ')') {
                 result = text.lastIndexOf(",(", result - 1);
             }
