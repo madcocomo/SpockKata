@@ -46,6 +46,17 @@ class TreeBuilderSpec extends Specification {
         root.left.left.text == "LL"
     }
 
+    def "deep left and right"() {
+        when:
+        TreeNode root = builder.build(
+            "A,(L,LL,LR),(R,(RL,RLL,(RLR,RLRL)),(RR, RRL))")
+        then:
+        root.left.right.text == "LR"
+        root.right.right.text == "RR"
+        root.right.right.left.text == "RRL"
+        root.right.right.right == null
+    }
+
     def "should split 3, 2, or 1 parts"(String text, String[] parts) {
         expect:
         builder.tripleSplit(text) == parts
