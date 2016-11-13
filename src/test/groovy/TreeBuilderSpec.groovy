@@ -1,3 +1,4 @@
+import spock.lang.Ignore
 import spock.lang.Specification
 import vic.kata.TreeBuilder
 import vic.kata.TreeNode
@@ -46,10 +47,11 @@ class TreeBuilderSpec extends Specification {
         root.left.left.text == "LL"
     }
 
+    @Ignore
     def "deep left and right"() {
         when:
         TreeNode root = builder.build(
-            "A,(L,LL,LR),(R,(RL,RLL,(RLR,RLRL)),(RR, RRL))")
+            "A,(L,LL,LR),(R,(RL,RLL,(RLR,RLRL)),(RR,RRL))")
         then:
         root.left.right.text == "LR"
         root.right.right.text == "RR"
@@ -69,6 +71,7 @@ class TreeBuilderSpec extends Specification {
         "A,B,(C,C1,(C2,C22))" || ["A", "B", "(C,C1,(C2,C22))"]
         "A,B,(C,(C1,C11),C2)" || ["A", "B", "(C,(C1,C11),C2)"]
         "A,(B,B1),C" || ["A", "(B,B1)", "C"]
+        "A,B,(C,(C1,C11),(RR,RRL))" || ["A", "B", "(C,(C1,C11),(RR,RRL))"]
     }
 
 }
