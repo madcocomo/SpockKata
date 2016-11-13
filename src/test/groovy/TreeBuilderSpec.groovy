@@ -50,10 +50,11 @@ class TreeBuilderSpec extends Specification {
         expect:
         builder.tripleSplit(text) == parts
         where:
-        text    || parts
-        "A,B,C" || ["A", "B", "C"]
-        "A,B"   || ["A", "B", ""]
-        "A"     || ["A", "", ""]
+        text         || parts
+        "A,B,C"      || ["A", "B", "C"]
+        "A,B"        || ["A", "B", ""]
+        "A"          || ["A", "", ""]
+        "A,B,(C,C1)" || ["A", "B", "(C,C1)"]
     }
 
 }
