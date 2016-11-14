@@ -9,7 +9,7 @@ public class TreeBuilder {
     }
 
     private String[] getTexts(String text) {
-        return tripleSplit(text.replaceAll("^\\(|\\)$",""));
+        return tripleSplit(text.replaceAll("^\\((.*)\\)$","$1"));
     }
 
     public String[] tripleSplit(String text) {
