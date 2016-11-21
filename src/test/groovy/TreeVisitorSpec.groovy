@@ -4,14 +4,24 @@ import vic.kata.TreeNode
 import vic.kata.TreeVisitor
 
 class TreeVisitorSpec extends Specification {
-    def "should return return root text if single node"() {
+    TreeBuilder builder = new TreeBuilder()
+    TreeVisitor visitor = new TreeVisitor();
+
+    def "should return root text if single node"() {
         given:
-        TreeBuilder builder = new TreeBuilder()
         TreeNode root = builder.build "A"
-        TreeVisitor visitor = new TreeVisitor();
         when:
         String actual = visitor.visit root
         then:
         actual == "A"
+    }
+
+    def "should return root-left text if has left"() {
+        given:
+        TreeNode root = builder.build "A,L"
+        when:
+        String actual = visitor.visit root
+        then:
+        actual == "AL"
     }
 }
