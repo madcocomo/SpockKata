@@ -1,4 +1,3 @@
-import spock.lang.Ignore
 import spock.lang.Specification
 import vic.kata.TreeBuilder
 import vic.kata.TreeNode
