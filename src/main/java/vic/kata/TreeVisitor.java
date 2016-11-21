@@ -4,8 +4,7 @@ public class TreeVisitor {
     public String visit(TreeNode node) {
         String result = "";
         result += visitNode(node);
-        result += visitNode(node.getLeft());
-        result += visitNode(node.getRight());
+        result += visitChildren(node);
 
         result += visitChildren(node.getLeft());
         return result;
