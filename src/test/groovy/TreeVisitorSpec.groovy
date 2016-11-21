@@ -20,5 +20,6 @@ class TreeVisitorSpec extends Specification {
         "A,L"   || "AL"
         "A,L,R" || "ALR"
         "A,(L1,L2)" || "AL1L2"
+        "A,(L1,L2),R" || "AL1RL2"
     }
 }
