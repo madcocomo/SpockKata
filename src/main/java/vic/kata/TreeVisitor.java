@@ -2,18 +2,21 @@ package vic.kata;
 
 public class TreeVisitor {
     public String visit(TreeNode node) {
-        String result = node.getText();
+        String result = "";
+        result += visitNode(node);
+        result += visitNode(node.getLeft());
+        result += visitNode(node.getRight());
+
         if (node.getLeft() != null) {
-            result += node.getLeft().getText();
-        }
-        if (node.getRight() != null) {
-            result += node.getRight().getText();
-        }
-        if (node.getLeft() != null) {
-            if (node.getLeft().getLeft() != null) {
-                result += node.getLeft().getLeft().getText();
-            }
+            result += visitNode(node.getLeft().getLeft());
         }
         return result;
+    }
+
+    private String visitNode(TreeNode node) {
+        if (node != null) {
+            return node.getText();
+        }
+        return "";
     }
 }
