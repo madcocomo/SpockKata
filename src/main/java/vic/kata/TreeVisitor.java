@@ -7,10 +7,7 @@ public class TreeVisitor {
         result += visitNode(node.getLeft());
         result += visitNode(node.getRight());
 
-        if (node.getLeft() != null) {
-            result += visitNode(node.getLeft().getLeft());
-            result += visitNode(node.getLeft().getRight());
-        }
+        result += visitChildren(node.getLeft());
         return result;
     }
 
@@ -19,5 +16,14 @@ public class TreeVisitor {
             return node.getText();
         }
         return "";
+    }
+
+    private String visitChildren(TreeNode node) {
+        String result = "";
+        if (node != null) {
+            result += visitNode(node.getLeft());
+            result += visitNode(node.getRight());
+        }
+        return result;
     }
 }
