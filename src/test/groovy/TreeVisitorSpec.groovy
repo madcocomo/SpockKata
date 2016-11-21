@@ -24,4 +24,14 @@ class TreeVisitorSpec extends Specification {
         then:
         actual == "AL"
     }
+
+    def "should return root-left-right"() {
+        given:
+        TreeNode root = builder.build "A,L,R"
+        when:
+        String actual = visitor.visit root
+        then:
+        actual == "ALR"
+
+    }
 }

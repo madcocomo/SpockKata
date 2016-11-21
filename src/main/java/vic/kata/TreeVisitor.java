@@ -6,6 +6,9 @@ public class TreeVisitor {
         if (node.getLeft() != null) {
             result += node.getLeft().getText();
         }
+        if (node.getRight() != null) {
+            result += node.getRight().getText();
+        }
         return result;
     }
 }
