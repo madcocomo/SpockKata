@@ -1,17 +1,18 @@
 package vic.kata;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class TreeVisitor {
     public String visit(TreeNode node) {
         String result = "";
-        result += visitNode(node);
-        List<TreeNode> visitLater;
+        List<TreeNode> visitLater = new ArrayList<>();
+        result += visitNode(node, visitLater);
         if (node != null) {
             visitLater = Arrays.asList(node.getLeft(), node.getRight());
             for (TreeNode child : visitLater) {
-                result += visitNode(child);
+                result += visitNode(child, visitLater);
             }
         }
 
@@ -24,7 +25,7 @@ public class TreeVisitor {
         return result;
     }
 
-    private String visitNode(TreeNode node) {
+    private String visitNode(TreeNode node, List<TreeNode> visitLater) {
         if (node != null) {
             return node.getText();
         }
@@ -34,8 +35,8 @@ public class TreeVisitor {
     private String visitChildren(TreeNode node) {
         String result = "";
         if (node != null) {
-            result += visitNode(node.getLeft());
-            result += visitNode(node.getRight());
+            result += visitNode(node.getLeft(), new ArrayList<>());
+            result += visitNode(node.getRight(), new ArrayList<>());
         }
         return result;
     }
