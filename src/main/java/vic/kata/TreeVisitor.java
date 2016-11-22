@@ -4,7 +4,10 @@ public class TreeVisitor {
     public String visit(TreeNode node) {
         String result = "";
         result += visitNode(node);
-        result += visitChildren(node);
+        if (node != null) {
+            result += visitNode(node.getLeft());
+            result += visitNode(node.getRight());
+        }
 
         result += visitChildren(node.getLeft());
         result += visitChildren(node.getRight());
