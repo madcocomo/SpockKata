@@ -8,6 +8,10 @@ public class TreeVisitor {
 
         result += visitChildren(node.getLeft());
         result += visitChildren(node.getRight());
+
+        if (node.getLeft() != null) {
+            result += visitChildren(node.getLeft().getLeft());
+        }
         return result;
     }
 
