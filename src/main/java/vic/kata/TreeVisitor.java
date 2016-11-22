@@ -7,6 +7,7 @@ public class TreeVisitor {
         result += visitChildren(node);
 
         result += visitChildren(node.getLeft());
+        result += visitChildren(node.getRight());
         return result;
     }
 
