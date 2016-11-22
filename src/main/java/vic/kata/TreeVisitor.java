@@ -1,12 +1,17 @@
 package vic.kata;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class TreeVisitor {
     public String visit(TreeNode node) {
         String result = "";
         result += visitNode(node);
+        List<TreeNode> visitLater;
         if (node != null) {
-            result += visitNode(node.getLeft());
-            result += visitNode(node.getRight());
+            visitLater = Arrays.asList(node.getLeft(), node.getRight());
+            result += visitNode(visitLater.get(0));
+            result += visitNode(visitLater.get(1));
         }
 
         result += visitChildren(node.getLeft());
