@@ -10,8 +10,9 @@ public class TreeVisitor {
         List<TreeNode> visitLater;
         if (node != null) {
             visitLater = Arrays.asList(node.getLeft(), node.getRight());
-            result += visitNode(visitLater.get(0));
-            result += visitNode(visitLater.get(1));
+            for (TreeNode child : visitLater) {
+                result += visitNode(child);
+            }
         }
 
         result += visitChildren(node.getLeft());
