@@ -3,8 +3,10 @@ package vic.kata;
 public class BullsAndCows {
     public static String getHint(String secret, String guess) {
         int bulls = 0;
-        if (secret.charAt(0) == guess.charAt(0)) {
-            bulls = 1;
+        for (int i = 0; i < secret.length(); i++ ) {
+            if (secret.charAt(i) == guess.charAt(i)) {
+                bulls = 1;
+            }
         }
         return bulls +"A0B";
     }
