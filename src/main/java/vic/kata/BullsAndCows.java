@@ -2,9 +2,10 @@ package vic.kata;
 
 public class BullsAndCows {
     public static String getHint(String secret, String guess) {
+        int bulls = 0;
         if (secret.equals(guess)) {
-            return "1A0B";
+            bulls = 1;
         }
-        return "0A0B";
+        return bulls +"A0B";
     }
 }
