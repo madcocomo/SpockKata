@@ -15,6 +15,7 @@ class BullsAndCowsSpec extends Specification {
         "1A0B" || "43"   | "53"  | "2 digits, 1 same, reverse"
         "2A0B" || "43"   | "43"  | "2 digits, all same"
         "0A1B" || "43"   | "32"  | "2 digits, 1 position diff"
+        "0A2B" || "43"   | "34"  | "2 digits, 2 position diff"
     }
 
 }
