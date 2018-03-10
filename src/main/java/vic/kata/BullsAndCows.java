@@ -5,7 +5,7 @@ public class BullsAndCows {
         int bulls = 0;
         for (int i = 0; i < secret.length(); i++ ) {
             if (secret.charAt(i) == guess.charAt(i)) {
-                bulls = 1;
+                bulls += 1;
             }
         }
         return bulls +"A0B";
