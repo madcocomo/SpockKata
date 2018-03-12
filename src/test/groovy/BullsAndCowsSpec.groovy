@@ -18,6 +18,7 @@ class BullsAndCowsSpec extends Specification {
         "0A2B" || "43"   | "34"  | "2 digits, 2 position diff"
         "0A1B" || "433"  | "356" | "2 position diff digits match to 1"
         "1A0B" || "343"  | "356" | "1 position diff digits after full match"
+        "1A0B" || "343"  | "563" | "1 position diff digits before full match"
     }
 
 }
