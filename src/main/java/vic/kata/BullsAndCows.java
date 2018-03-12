@@ -16,6 +16,7 @@ public class BullsAndCows {
             Character c = secret.charAt(i);
             if (c == guess.charAt(i)) {
                 bulls += 1;
+                guessChar.remove(c);
             } else if (guessChar.contains(c)) {
                 cows += 1;
                 guessChar.remove(c);
