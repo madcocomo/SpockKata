@@ -10,10 +10,10 @@ public class BullsAndCows {
         List<Character> guessChar = new ArrayList<>();
         for (int i = 0; i < guess.length(); i++ ) {
             Character c = secret.charAt(i);
-            guessChar.add(guess.charAt(i));
             if (c == guess.charAt(i)) {
                 bulls += 1;
-                guessChar.remove(c);
+            } else {
+                guessChar.add(guess.charAt(i));
             }
         }
 
