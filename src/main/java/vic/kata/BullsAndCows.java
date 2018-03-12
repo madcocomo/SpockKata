@@ -1,7 +1,6 @@
 package vic.kata;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class BullsAndCows {
@@ -14,11 +13,12 @@ public class BullsAndCows {
         }
 
         for (int i = 0; i < secret.length(); i++ ) {
-            if (secret.charAt(i) == guess.charAt(i)) {
+            Character c = secret.charAt(i);
+            if (c == guess.charAt(i)) {
                 bulls += 1;
-            } else if (guessChar.contains(secret.charAt(i))) {
+            } else if (guessChar.contains(c)) {
                 cows += 1;
-                guessChar.remove((Character)secret.charAt(i));
+                guessChar.remove(c);
             }
         }
         return bulls +"A" + cows + "B";
