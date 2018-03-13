@@ -7,8 +7,8 @@ public class BullsAndCows {
         int[] secretDigitCounts = new int[10];
         int[] guessDigitCounts = new int[10];
         for (int i = 0; i < guess.length(); i++ ) {
-            int secretDigit = secret.charAt(i) - '0';
-            int guessDigit = guess.charAt(i) - '0';
+            int secretDigit = toDigit(secret.charAt(i));
+            int guessDigit = toDigit(guess.charAt(i));
             if (secretDigit == guessDigit) {
                 bulls += 1;
             } else {
@@ -18,10 +18,12 @@ public class BullsAndCows {
         }
 
         for (int i = 0; i < 10; i++) {
-            Integer secretCount = secretDigitCounts[i];
-            Integer guessCount = guessDigitCounts[i];
-            cows += Math.min(secretCount, guessCount);
+            cows += Math.min(secretDigitCounts[i], guessDigitCounts[i]);
         }
         return bulls +"A" + cows + "B";
+    }
+
+    private static int toDigit(char c) {
+        return c - '0';
     }
 }
