@@ -7,22 +7,22 @@ public class BullsAndCows {
     public static String getHint(String secret, String guess) {
         int bulls = 0;
         int cows = 0;
-        List<Character> guessChar = new ArrayList<>();
+        List<Character> secretChars = new ArrayList<>();
+        List<Character> guessChars = new ArrayList<>();
         for (int i = 0; i < guess.length(); i++ ) {
             Character c = secret.charAt(i);
             if (c == guess.charAt(i)) {
                 bulls += 1;
             } else {
-                guessChar.add(guess.charAt(i));
+                secretChars.add(c);
+                guessChars.add(guess.charAt(i));
             }
         }
 
-        for (int i = 0; i < secret.length(); i++ ) {
-            Character c = secret.charAt(i);
-            if (c == guess.charAt(i)) {
-            } else if (guessChar.contains(c)) {
+        for (Character c : secretChars) {
+            if (guessChars.contains(c)) {
                 cows += 1;
-                guessChar.remove(c);
+                guessChars.remove(c);
             }
         }
         return bulls +"A" + cows + "B";
