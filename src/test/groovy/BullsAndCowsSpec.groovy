@@ -20,6 +20,10 @@ class BullsAndCowsSpec extends Specification {
         "1A0B" || "343"  | "356" | "1 position diff digits after full match"
         "1A0B" || "343"  | "563" | "1 position diff digits before full match"
         "1A0B" || "563"  | "343" | "reverse 1 position diff digits before full match"
+        "1A3B" || "1807" | "7810"| "example test"
+        "1A3B" || "7810" | "1807"| "reverse example test"
+        "1A1B" || "1123" | "0111"| "example duplication test"
+        "1A1B" || "0111" | "1123"| "reverse example duplication test"
     }
 
 }

@@ -20,7 +20,7 @@ public class BullsAndCows {
         for (int i = 0; i < secret.length(); i++ ) {
             Character c = secret.charAt(i);
             if (c == guess.charAt(i)) {
-            }else if (guessChar.contains(c)) {
+            } else if (guessChar.contains(c)) {
                 cows += 1;
                 guessChar.remove(c);
             }
