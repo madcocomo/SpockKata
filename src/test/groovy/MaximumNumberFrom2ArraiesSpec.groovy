@@ -8,7 +8,7 @@ class MaximumNumberFrom2ArraysSpec extends Specification {
     def "maximum number test length #k from #array1, #array2"() {
         when:
             def solution = new MaximumNumberFrom2Arrays()
-            int[] actual = solution.maxNumberOf((int[])array1, (int[])array2, 1)
+            int[] actual = solution.maxNumberOf((int[])array1, (int[])array2, k)
         then:
             actual == (int[])expected
         where:
@@ -17,6 +17,9 @@ class MaximumNumberFrom2ArraysSpec extends Specification {
             1 | [5,3]   | []     || [5]
             1 | [3,5]   | []     || [5]
             2 | [3,5,2] | []     || [5,2]
+            2 | [5,2]   | []     || [5,2]
+            2 | [2,5]   | []     || [2,5]
+            2 | [3,2,5] | []     || [3,2]
     }
 
 }
