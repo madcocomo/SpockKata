@@ -12,9 +12,11 @@ class MaximumNumberFrom2ArraysSpec extends Specification {
         then:
             actual == (int[])expected
         where:
-            k | array1 | array2 || expected
-            1 | [5]    | []     || [5]
-            1 | [5,3]  | []     || [5]
+            k | array1  | array2 || expected
+            1 | [5]     | []     || [5]
+            1 | [5,3]   | []     || [5]
+            1 | [3,5]   | []     || [5]
+            2 | [3,5,2] | []     || [5,2]
     }
 
 }
