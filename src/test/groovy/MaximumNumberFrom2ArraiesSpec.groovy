@@ -25,6 +25,8 @@ class MaximumNumberFrom2ArraysSpec extends Specification {
             2 | [5]     | [3]    || [5,3]
             3 | [3,9]   | [8]    || [8,3,9]
             3 | [6,4]   | [5]    || [6,5,4]
+            3 | [4,9]   | [3,9]  || [9,4,9]
+            3 | [3,9]   | [4,9]  || [9,4,9]
     }
 
 }
