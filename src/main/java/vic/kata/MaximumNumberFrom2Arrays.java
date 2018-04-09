@@ -9,7 +9,17 @@ public class MaximumNumberFrom2Arrays {
                     maxP = p;
                 }
             }
-            result[i] = num1[maxP];
+            if (num1.length > maxP) {
+                result[i] = num1[maxP];
+            }
+            for (int p = maxP; p < num2.length - (k - i) + 1; p++) {
+                if (num2[maxP] < num2[p]) {
+                    maxP = p;
+                }
+            }
+            if (num2.length > maxP) {
+                result[i] = num2[maxP];
+            }
         }
 
         return result;
