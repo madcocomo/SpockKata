@@ -12,7 +12,7 @@ public class MaximumNumberFrom2Arrays {
             int max2 = valueOrMinimize(num2, maxP2);
             boolean select1 = false;
             if (max1 == max2) {
-                select1 = num1[0] < num2[0];
+                select1 = valueOrMinimize(num1,maxP1+1) > valueOrMinimize(num2, maxP2+1);
             }
             if (select1 || max1 > max2) {
                 result[i] = max1;
