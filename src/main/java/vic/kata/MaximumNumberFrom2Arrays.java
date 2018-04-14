@@ -8,7 +8,7 @@ public class MaximumNumberFrom2Arrays {
             int oldMaxP2 = maxP2;
             maxP1 = getMaxIndex(num1, maxP1, getLimit(k, i, num1.length, num2.length-oldMaxP2));
             maxP2 = getMaxIndex(num2, maxP2, getLimit(k, i, num2.length, num1.length-oldMaxP1));
-            boolean select1 = false;
+            Boolean select1 = null;
             for (int n = 0; n < Math.max(num1.length, num2.length); n++) {
                 int i1 = valueOrMinimize(num1, maxP1 + n);
                 int i2 = valueOrMinimize(num2, maxP2 + n);
@@ -16,6 +16,10 @@ public class MaximumNumberFrom2Arrays {
                     select1 = i1 > i2;
                     break;
                 }
+            }
+            if (select1 == null &&
+                maxP1 == num1.length-1 && maxP2 == num2.length-1) {
+                select1 = num1[0] < num2[0];
             }
             int max1 = valueOrMinimize(num1, maxP1);
             int max2 = valueOrMinimize(num2, maxP2);
