@@ -17,9 +17,16 @@ public class MaximumNumberFrom2Arrays {
                     break;
                 }
             }
-            if (select1 == null &&
-                maxP1 == num1.length-1 && maxP2 == num2.length-1) {
-                select1 = num1[0] < num2[0];
+            if (select1 == null) {
+                int maxBeforeP1 = -1;
+                for (int n = 0; n < maxP1; n++) {
+                   maxBeforeP1 = num1[n];
+                }
+                int maxBeforeP2 = -1;
+                for (int n = 0; n < maxP2; n++) {
+                    maxBeforeP2 = num2[n];
+                }
+                select1 = maxBeforeP1 < maxBeforeP2;
             }
             int max1 = valueOrMinimize(num1, maxP1);
             int max2 = valueOrMinimize(num2, maxP2);
