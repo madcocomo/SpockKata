@@ -19,12 +19,16 @@ public class MaximumNumberFrom2Arrays {
             }
             if (select1 == null) {
                 int maxBeforeP1 = -1;
-                for (int n = 0; n < maxP1; n++) {
-                   maxBeforeP1 = num1[n];
+                for (int n = 0; n < Math.min(maxP1,num1.length-(k-i-1)+1); n++) {
+                    if (maxBeforeP1 < num1[n]) {
+                        maxBeforeP1 = num1[n];
+                    }
                 }
                 int maxBeforeP2 = -1;
-                for (int n = 0; n < maxP2; n++) {
-                    maxBeforeP2 = num2[n];
+                for (int n = 0; n < Math.min(maxP2,num2.length-(k-i-1)+1); n++) {
+                    if (maxBeforeP2 < num2[n]) {
+                        maxBeforeP2 = num2[n];
+                    }
                 }
                 select1 = maxBeforeP1 < maxBeforeP2;
             }
