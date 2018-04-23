@@ -1,11 +1,27 @@
 package vic.kata;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class MaximumNumberFrom2Arrays {
     class IndexState {
-        int p1, p2;
+        final int p1, p2;
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            IndexState state = (IndexState) o;
+            return p1 == state.p1 &&
+                    p2 == state.p2;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(p1, p2);
+        }
+
         IndexState(int p1, int p2) {
             this.p1 = p1;
             this.p2 = p2;
@@ -16,48 +32,35 @@ public class MaximumNumberFrom2Arrays {
         candidates.add(new IndexState(0,0));
         int[] result = new int[k];
         for (int i = 0; i < k; i++) {
-            IndexState state = candidates.iterator().next();
-            int maxP1 = getMaxIndex(num1, state.p1, getLimit(k, i, num1.length, num2.length- state.p2));
-            int maxP2 = getMaxIndex(num2, state.p2, getLimit(k, i, num2.length, num1.length- state.p1));
-            int max1 = valueOrMinimize(num1, maxP1);
-            int max2 = valueOrMinimize(num2, maxP2);
-            int select1 = max1 - max2;
-            if (select1 == 0) {
-                for (int n = 1; n < Math.max(num1.length, num2.length); n++) {
-                    int i1 = valueOrMinimize(num1, maxP1 + n);
-                    int i2 = valueOrMinimize(num2, maxP2 + n);
-                    if (i1 != i2) {
-                        select1 = i1 - i2;
-                        break;
+            Set<IndexState> nextCandidates = new HashSet<>();
+            for (IndexState state : candidates) {
+                int maxP1 = getMaxIndex(num1, state.p1, getLimit(k, i, num1.length, num2.length - state.p2));
+                int maxP2 = getMaxIndex(num2, state.p2, getLimit(k, i, num2.length, num1.length - state.p1));
+                int max1 = valueOrMinimize(num1, maxP1);
+                int max2 = valueOrMinimize(num2, maxP2);
+                int select1 = max1 - max2;
+                if (select1 >= 0) {
+                    if (result[i] < max1) {
+                        nextCandidates.clear();
+                    }
+                    if (result[i] <= max1) {
+                        result[i] = max1;
+                        nextCandidates.add(new IndexState(maxP1 + 1, state.p2));
                     }
                 }
-            }
-            if (select1 == 0) {
-                int maxBeforeP1 = getMaxNumberBefore(maxP1, num1, k, i);
-                int maxBeforeP2 = getMaxNumberBefore(maxP2, num2, k, i);
-                select1 = maxBeforeP2 - maxBeforeP1;
-            }
-            Set<IndexState> nextCandidates = new HashSet<>();
-            if (select1 > 0) {
-                result[i] = max1;
-                nextCandidates.add(new IndexState(maxP1+1, state.p2));
-            } else {
-                result[i] = max2;
-                nextCandidates.add(new IndexState(state.p1, maxP2+1));
-            }
-            candidates = nextCandidates;
-        }
-
-        return result;
-    }
-
-    private int getMaxNumberBefore(int maxP1, int[] num1, int k, int i) {
-        int result = -1;
-        for (int n = 0; n < Math.min(maxP1,num1.length-(k-i-1)+1); n++) {
-            if (result < num1[n]) {
-                result = num1[n];
+                if (select1 <= 0) {
+                    if (result[i] < max2) {
+                        nextCandidates.clear();
+                    }
+                    if (result[i] <= max2) {
+                        result[i] = max2;
+                        nextCandidates.add(new IndexState(state.p1, maxP2 + 1));
+                    }
+                }
+                candidates = nextCandidates;
             }
         }
+
         return result;
     }
 
