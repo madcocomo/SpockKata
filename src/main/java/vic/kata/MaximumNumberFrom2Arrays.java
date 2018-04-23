@@ -35,28 +35,25 @@ public class MaximumNumberFrom2Arrays {
             Set<IndexState> nextCandidates = new HashSet<>();
             for (IndexState state : candidates) {
                 int maxP1 = getMaxIndex(num1, state.p1, getLimit(k, i, num1.length, num2.length - state.p2));
-                int maxP2 = getMaxIndex(num2, state.p2, getLimit(k, i, num2.length, num1.length - state.p1));
                 int max1 = valueOrMinimize(num1, maxP1);
+                if (result[i] < max1) {
+                    nextCandidates.clear();
+                }
+                if (result[i] <= max1) {
+                    result[i] = max1;
+                    nextCandidates.add(new IndexState(maxP1 + 1, state.p2));
+                }
+
+                int maxP2 = getMaxIndex(num2, state.p2, getLimit(k, i, num2.length, num1.length - state.p1));
                 int max2 = valueOrMinimize(num2, maxP2);
-                int select1 = max1 - max2;
-                if (select1 >= 0) {
-                    if (result[i] < max1) {
-                        nextCandidates.clear();
-                    }
-                    if (result[i] <= max1) {
-                        result[i] = max1;
-                        nextCandidates.add(new IndexState(maxP1 + 1, state.p2));
-                    }
+                if (result[i] < max2) {
+                    nextCandidates.clear();
                 }
-                if (select1 <= 0) {
-                    if (result[i] < max2) {
-                        nextCandidates.clear();
-                    }
-                    if (result[i] <= max2) {
-                        result[i] = max2;
-                        nextCandidates.add(new IndexState(state.p1, maxP2 + 1));
-                    }
+                if (result[i] <= max2) {
+                    result[i] = max2;
+                    nextCandidates.add(new IndexState(state.p1, maxP2 + 1));
                 }
+
                 candidates = nextCandidates;
             }
         }
@@ -65,8 +62,7 @@ public class MaximumNumberFrom2Arrays {
     }
 
     private int getLimit(int k, int resultIndex, int length, int anotherLength) {
-        int result = Math.min(length, length + anotherLength - (k - resultIndex) + 1);
-        return result;
+        return Math.min(length, length + anotherLength - (k - resultIndex) + 1);
     }
 
     private int getMaxIndex(int[] num, int start, int limit) {
