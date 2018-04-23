@@ -4,21 +4,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class MaximumNumberFrom2Arrays {
-    class ResultState {
-        int[] result;
+    class IndexState {
         int p1, p2;
-        ResultState(int k) {
-            result = new int[k];
-            p1 = 0;
-            p2 = 0;
+        IndexState(int p1, int p2) {
+            this.p1 = p1;
+            this.p2 = p2;
         }
     }
     public int[] maxNumberOf(int[] num1, int[] num2, int k) {
-        Set<ResultState> candidates = new HashSet<>();
-        candidates.add(new ResultState(k));
+        Set<IndexState> candidates = new HashSet<>();
+        candidates.add(new IndexState(0,0));
+        int[] result = new int[k];
         for (int i = 0; i < k; i++) {
-            ResultState state = candidates.iterator().next();
-            int[] result = state.result;
+            IndexState state = candidates.iterator().next();
             int maxP1 = getMaxIndex(num1, state.p1, getLimit(k, i, num1.length, num2.length- state.p2));
             int maxP2 = getMaxIndex(num2, state.p2, getLimit(k, i, num2.length, num1.length- state.p1));
             int max1 = valueOrMinimize(num1, maxP1);
@@ -39,16 +37,18 @@ public class MaximumNumberFrom2Arrays {
                 int maxBeforeP2 = getMaxNumberBefore(maxP2, num2, k, i);
                 select1 = maxBeforeP2 - maxBeforeP1;
             }
+            Set<IndexState> nextCandidates = new HashSet<>();
             if (select1 > 0) {
                 result[i] = max1;
-                state.p1 = maxP1+1;
+                nextCandidates.add(new IndexState(maxP1+1, state.p2));
             } else {
                 result[i] = max2;
-                state.p2 = maxP2+1;
+                nextCandidates.add(new IndexState(state.p1, maxP2+1));
             }
+            candidates = nextCandidates;
         }
 
-        return candidates.iterator().next().result;
+        return result;
     }
 
     private int getMaxNumberBefore(int maxP1, int[] num1, int k, int i) {
