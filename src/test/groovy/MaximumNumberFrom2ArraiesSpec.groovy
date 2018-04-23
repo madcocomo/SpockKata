@@ -16,6 +16,7 @@ class MaximumNumberFrom2ArraysSpec extends Specification {
                 actualRevise == (int[]) expected
             }
         where:
+        '''4 | [4,2,1,9] | [4,3,9]|| [9,4,3,9]'''
             k | array1  | array2 || expected
             1 | [5]     | []     || [5]
             1 | [5,3]   | []     || [5]
