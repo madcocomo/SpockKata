@@ -5,28 +5,6 @@ import java.util.Objects;
 import java.util.Set;
 
 public class MaximumNumberFrom2Arrays {
-    class IndexState {
-        final int p1, p2;
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            IndexState state = (IndexState) o;
-            return p1 == state.p1 &&
-                    p2 == state.p2;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(p1, p2);
-        }
-
-        IndexState(int p1, int p2) {
-            this.p1 = p1;
-            this.p2 = p2;
-        }
-    }
     public int[] maxNumberOf(int[] num1, int[] num2, int k) {
         Set<IndexState> candidates = new HashSet<>();
         candidates.add(new IndexState(0,0));
@@ -77,5 +55,25 @@ public class MaximumNumberFrom2Arrays {
 
     private int valueOrMinimize(int[] num, int index) {
         return index < num.length ? num[index] : -1;
+    }
+
+    class IndexState {
+        final int p1, p2;
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            IndexState state = (IndexState) o;
+            return p1 == state.p1 &&
+                    p2 == state.p2;
+        }
+        @Override
+        public int hashCode() {
+            return Objects.hash(p1, p2);
+        }
+        IndexState(int p1, int p2) {
+            this.p1 = p1;
+            this.p2 = p2;
+        }
     }
 }
