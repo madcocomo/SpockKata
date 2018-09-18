@@ -1,8 +1,10 @@
 import spock.lang.Specification
+import spock.lang.Unroll
 import vic.kata.FirstMissingPositive
 
 //Leetcode 41
 class FirstMissingPositiveSpec extends Specification {
+    @Unroll
     def "will be '#expect' from #numbers"() {
         expect:
         FirstMissingPositive.of(numbers as int[]) == expect
@@ -10,6 +12,7 @@ class FirstMissingPositiveSpec extends Specification {
         expect || numbers
         1      || [0]
         2      || [1]
+        2      || [3,1]
     }
 
 }
