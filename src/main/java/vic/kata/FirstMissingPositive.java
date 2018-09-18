@@ -14,7 +14,14 @@ public class FirstMissingPositive {
         for (int i = 0; i < numbers.length; i++) {
             int p = numbers[i];
             if (p > 0 ) {
-                numbers[i] = numbers[p - 1];
+                numbers[i] = numbers[p - 1] > 0 ? numbers[p - 1] : 0;
+                numbers[p - 1] = -p;
+            }
+        }
+        for (int i = 0; i < numbers.length; i++) {
+            int p = numbers[i];
+            if (p > 0) {
+                numbers[i] = numbers[p - 1] > 0 ? numbers[p - 1] : 0;
                 numbers[p - 1] = -p;
             }
         }
