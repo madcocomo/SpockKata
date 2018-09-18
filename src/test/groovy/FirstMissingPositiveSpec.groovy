@@ -15,6 +15,7 @@ class FirstMissingPositiveSpec extends Specification {
         2      || [3,1]
         3      || [2,1]
         3      || [2,5,1]
+        3      || [2,-5,1]
     }
 
 }
