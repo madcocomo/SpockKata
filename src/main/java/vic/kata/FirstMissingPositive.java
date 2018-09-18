@@ -2,28 +2,20 @@ package vic.kata;
 
 public class FirstMissingPositive {
     public static int of(int[] numbers) {
-        int count = 0;
-        for (int i = 0; i < numbers.length; i++) {
+        for (int i = 0; i < numbers.length;) {
             int p = numbers[i];
-            if (p <= 0 || p > numbers.length) {
-                numbers[i] = 0;
+            if (p <= 0 || p >= numbers.length || numbers[p - 1] == p) {
+                i++;
             } else {
-                count++;
+                numbers[i] = numbers[p - 1];
+                numbers[p - 1] = p;
             }
         }
         for (int i = 0; i < numbers.length; i++) {
-            int p = numbers[i];
-            while (p > 0) {
-                numbers[i] = numbers[p - 1] > 0 ? numbers[p - 1] : 0;
-                numbers[p - 1] = -p;
-                p = numbers[i];
-            }
-        }
-        for (int i = 0; i < count; i++) {
-            if (numbers[i] == 0) {
+            if (numbers[i] != i+1) {
                 return i+1;
             }
         }
-        return count + 1;
+        return numbers.length + 1;
     }
 }
