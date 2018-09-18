@@ -6,7 +6,7 @@ public class FirstMissingPositive {
         int min = Integer.MAX_VALUE;
         for (int i = 0; i < numbers.length; i++) {
             if (numbers[i] > missing) {
-                min = numbers[i];
+                min = Math.min(numbers[i], min);
             }
             if (numbers[i] == missing) {
                 missing = numbers[i] + 1;
