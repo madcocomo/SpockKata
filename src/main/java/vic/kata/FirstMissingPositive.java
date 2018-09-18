@@ -2,6 +2,7 @@ package vic.kata;
 
 public class FirstMissingPositive {
     public static int of(int[] numbers) {
-        return 0;
+        if (numbers[0] == 1) return 2;
+        return 1;
     }
 }

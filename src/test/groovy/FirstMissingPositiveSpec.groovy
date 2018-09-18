@@ -8,7 +8,8 @@ class FirstMissingPositiveSpec extends Specification {
         FirstMissingPositive.of(numbers as int[]) == expect
         where:
         expect || numbers
-        1      || [1]
+        1      || [0]
+        2      || [1]
     }
 
 }
